@@ -1,5 +1,5 @@
 {
-  "grid_percentage": 0.03,
+  "grid_percentage": 0.01,
   "bots": [
     {
       "market_pair": "XRPMYR",
@@ -19,7 +19,7 @@
     },
     {
       "market_pair": "CRVMYR",
-      "trade_quantity": 0.1
+      "trade_quantity": 10
     }
   ]
 }
