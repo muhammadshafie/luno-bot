@@ -1,0 +1,6 @@
+services:
+  - type: web
+    env: python
+    name: luno-grid-bot
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn Luno:app

@@ -1,0 +1,109 @@
+Salam, sedikit explanation mengenai fungsi bot ini dan macam mana untuk run.
+
+Mula2 dapatkan api_key dan api_secret daripada Luno
+Boleh pergi dekat Profile>Security>API keys>Create API key
+Copy dan paste key dan secret dalam note/word
+
+Install Python launcer dari windows store atau website https://www.python.org/downloads/
+
+Buka api.txt dan set bot mengikut strategi masing2
+Dekat bahagian api_key dan api_secret, copy dan paste key dan secret yang diberi oleh Luno di dalam kurungan "xxxxx"
+
+Set peratus profit yang ingin diambil, sebagai contoh 0.01 = 1%, untuk 5 percent set kepada 0.05
+
+Pilih coin untuk trade, tukar di bahagian market_pair dan setkan saiz trade di bahagian trade_quantity. Secara default BTC (XBTMYR), ETH dan XRP telah diset kepada jumlah trade terendah yang dibenarkan oleh Luno.
+
+Untuk run bot, right click Luno.py>Open with>Python launcer
+
+Limitasi API Luno
+- hanya 300 call per minute
+- hanya boleh detect 100 order terkini
+Oleh sebab limitasi diatas, recommended untuk hanya run 3-5 coin serentak dan restart bot setiap hari. 
+
+Bug yang ada:
+order lama tidak auto cancel>cancel secara manual di order list
+
+Sekiranya bot problem boleh tutup bot dengan tekan Control + C dan run balik bot
+
+Berikut merupakan market pair yang tersedia didalam Luno beserta minimum trade quantity
+
+    {
+      "market_pair": "XBTMYR",
+      "trade_quantity": 0.0001
+    },
+    {
+      "market_pair": "ETHMYR",
+      "trade_quantity": 0.001
+    },
+    {
+      "market_pair": "XRPMYR",
+      "trade_quantity": 1
+    },
+    {
+      "market_pair": "SOLMYR",
+      "trade_quantity": 0.001
+    },
+    {
+      "market_pair": "ADAMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "DOTMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "LINKMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "UNIMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "LTCMYR",
+      "trade_quantity": 0.001
+    },
+    {
+      "market_pair": "BCHMYR",
+      "trade_quantity": 0.001
+    },
+    {
+      "market_pair": "AVAXMYR",
+      "trade_quantity": 0.001
+    },
+    {
+      "market_pair": "ATOMMYR",
+      "trade_quantity": 0.001
+    },
+    {
+      "market_pair": "MKRMYR",
+      "trade_quantity": 0.0001
+    },
+    {
+      "market_pair": "AAVEMYR",
+      "trade_quantity": 0.001
+    },
+    {
+      "market_pair": "CRVMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "SNXMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "XLMMYR",
+      "trade_quantity": 10
+    },
+    {
+      "market_pair": "MATICMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "ALGOMYR",
+      "trade_quantity": 0.1
+    },
+    {
+      "market_pair": "NEARMYR",
+      "trade_quantity": 0.1
+    }
