@@ -6,14 +6,6 @@
       "trade_quantity": 1
     },
     {
-      "market_pair": "XLMMYR",
-      "trade_quantity": 10
-    },
-    {
-      "market_pair": "ALGOMYR",
-      "trade_quantity": 10
-    },
-    {
       "market_pair": "MATICMYR",
       "trade_quantity": 1
     },
