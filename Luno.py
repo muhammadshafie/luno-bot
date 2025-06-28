@@ -319,7 +319,7 @@ if __name__ == "__main__":
             market_pair=bot_cfg["market_pair"],
             trade_quantity=bot_cfg["trade_quantity"],
             grid_buy_percentage=bot_cfg.get("grid_buy_percentage", 0.01),
-            grid_sell_percentage=bot_cfg.get("grid_sell_percentage", 0.01)
+            grid_sell_percentage=bot_cfg.get("grid_sell_percentage", 0.02)
         )
         running_bots.append(bot)
         t = Thread(target=bot.run)
