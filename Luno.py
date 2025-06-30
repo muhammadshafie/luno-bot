@@ -166,9 +166,12 @@ class GridBot:
             "sell_price": sell_price
         }
 
-        message = f"🔄 Rebuilding Grid [{self.market_pair}]
-BUY @ {buy_price} ({'✅' if buy_id else '❌'})
-SELL @ {sell_price} ({'✅' if sell_id else '❌'})"
+        message = (
+            f"🔄 Rebuilding Grid [{self.market_pair}]\n"
+            f"BUY @ {buy_price} ({'✅' if buy_id else '❌'})\n"
+            f"SELL @ {sell_price} ({'✅' if sell_id else '❌'})"
+        )
+
         send_telegram_message(message)
 
     def run(self):
