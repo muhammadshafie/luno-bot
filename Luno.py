@@ -385,63 +385,63 @@ def signal_handler(sig, frame):
 	sys.exit(0)
 
 if __name__ == "__main__":
-	# Load configuration
+    # Load configuration
     with open("api.txt") as f:
         config = json.load(f)
 
-	# 4-A 🔑 fetch credentials ────────────────────────────────────────────────
+    # 4-A 🔑 fetch credentials ────────────────────────────────────────────────
     api_key = os.getenv("LUNO_API_KEY")
     api_secret = os.getenv("LUNO_API_SECRET")
     bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
     chat_id = os.getenv("TELEGRAM_CHAT_ID")
 
- 	if not api_key or not api_secret:
+    if not api_key or not api_secret:
         logging.error("❌  API credentials not found in Secrets or api.txt – aborting.")
         sys.exit(1)
 
     if "bots" not in config or not config["bots"]:
         logging.error("No bot configurations found in api.txt. Exiting.")
-        summary_logger.info("Shutdown failed.")
+        logging.info("Shutdown failed.")
         sys.exit(1)
-		
-	# Initialize Telegram notifier
-	notifier = TelegramNotifier(bot_token, chat_id)
-	
-	# Register signal handler
-	signal.signal(signal.SIGINT, signal_handler)
-	
-	bot_configs = config["bots"]
+        
+    # Initialize Telegram notifier
+    notifier = TelegramNotifier(bot_token, chat_id)
+    
+    # Register signal handler
+    signal.signal(signal.SIGINT, signal_handler)
+    
+    bot_configs = config["bots"]
 
-	# Initialize bots for each market pair
-	for bot_config in bot_configs:
-			bot = GridBot(
-				api_key=api_key,
-            	api_secret=api_secret,
-				market_pair=bot_config["market_pair"],
-				trade_quantity=bot_config["trade_quantity"],
-				grid_percentage=config.get("grid_percentage", 0.017),
-				quantity_multiplier=bot_config.get("quantity_multiplier", 1),
-				notifier=notifier
-			)
-			running_bots.append(bot)
-			
-			# Start bot in a separate thread
-			bot_thread = Thread(target=bot.run)
-			bot_thread.start()
-			
-			# Send startup notification
-			initial_balance = bot.get_balance(bot.fiat_currency)
-			notifier.send_message(
-				f"🚀 Starting Grid Bot for {bot.market_pair}\n"
-				f"Initial {bot.fiat_currency} balance: {initial_balance:.2f}"
-			)
-			
-			# Small delay between bot startups
-			time.sleep(1)
-	
-	# Keep main thread alive
-	try:
-		while any(bot.running for bot in running_bots):
-			time.sleep(1)
-	except KeyboardInterrupt:
-		signal_handler(signal.SIGINT, None)
+    # Initialize bots for each market pair
+    for bot_config in bot_configs:
+        bot = GridBot(
+            api_key=api_key,
+            api_secret=api_secret,
+            market_pair=bot_config["market_pair"],
+            trade_quantity=bot_config["trade_quantity"],
+            grid_percentage=config.get("grid_percentage", 0.017),
+            quantity_multiplier=bot_config.get("quantity_multiplier", 1),
+            notifier=notifier
+        )
+        running_bots.append(bot)
+        
+        # Start bot in a separate thread
+        bot_thread = Thread(target=bot.run)
+        bot_thread.start()
+        
+        # Send startup notification
+        initial_balance = bot.get_balance(bot.fiat_currency)
+        notifier.send_message(
+            f"🚀 Starting Grid Bot for {bot.market_pair}\n"
+            f"Initial {bot.fiat_currency} balance: {initial_balance:.2f}"
+        )
+        
+        # Small delay between bot startups
+        time.sleep(1)
+    
+    # Keep main thread alive
+    try:
+        while any(bot.running for bot in running_bots):
+            time.sleep(1)
+    except KeyboardInterrupt:
+        signal_handler(signal.SIGINT, None)
