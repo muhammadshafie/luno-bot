@@ -1,5 +1,5 @@
 {
-  "grid_percentage": 0.01,
+  "grid_percentage": 0.017,
   "bots": [
     {
 			"market_pair": "CRVMYR",
@@ -10,6 +10,6 @@
 			"market_pair": "MATICMYR",
 			"trade_quantity": 1,
       "quantity_multiplier":10
-		},
+		}
   ]
 }
