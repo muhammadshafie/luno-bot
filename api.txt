@@ -1,17 +1,15 @@
 {
-  "grid_percentage": 0.05,
+  "grid_percentage": 0.01,
   "bots": [
     {
-      "market_pair": "XRPMYR",
-      "trade_quantity": 1
-    },
-    {
-      "market_pair": "MATICMYR",
-      "trade_quantity": 1
-    },
-    {
-      "market_pair": "CRVMYR",
-      "trade_quantity": 1
-    }
+			"market_pair": "CRVMYR",
+			"trade_quantity": 1,
+      "quantity_multiplier": 3
+		},
+		{
+			"market_pair": "MATICMYR",
+			"trade_quantity": 1,
+      "quantity_multiplier":10
+		},
   ]
 }
