@@ -17,6 +17,9 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv           # <-- NEW
 from keep_alive import keep_alive        # <-- NEW (create keep_alive.py as shown before)
 
+keep_alive()                 # 🚀 spin up the Flask server first
+load_dotenv()                # 🔐 read .env into os.environ
+
 # Configure logging
 logging.basicConfig(
 	level=logging.INFO,
