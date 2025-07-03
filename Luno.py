@@ -386,9 +386,8 @@ def signal_handler(sig, frame):
 
 if __name__ == "__main__":
 	# Load configuration
-	try:
-		with open("api.txt") as f:
-			config = json.load(f)
+    with open("api.txt") as f:
+        config = json.load(f)
 
 	# 4-A 🔑 fetch credentials ────────────────────────────────────────────────
     api_key = os.getenv("LUNO_API_KEY")
@@ -415,7 +414,6 @@ if __name__ == "__main__":
 
 	# Initialize bots for each market pair
 	for bot_config in bot_configs:
-		try:
 			bot = GridBot(
 				api_key=api_key,
             	api_secret=api_secret,
@@ -440,8 +438,6 @@ if __name__ == "__main__":
 			
 			# Small delay between bot startups
 			time.sleep(1)
-		except Exception as e:
-			logging.error(f"Failed to initialize bot for {bot_config['market_pair']}: {e}")
 	
 	# Keep main thread alive
 	try:
