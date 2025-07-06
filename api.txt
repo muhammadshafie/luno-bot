@@ -1,5 +1,5 @@
 {
-  "grid_percentage": 0.017,
+  "grid_percentage": 0.01,
   "bots": [
     {
 			"market_pair": "CRVMYR",
