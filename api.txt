@@ -3,13 +3,13 @@
   "bots": [
     {
 			"market_pair": "CRVMYR",
-			"trade_quantity": 1,
-      "quantity_multiplier": 3
+			"trade_quantity": 10,
+      		"quantity_multiplier": 3
 		},
 		{
 			"market_pair": "MATICMYR",
 			"trade_quantity": 1,
-      "quantity_multiplier":10
+      		"quantity_multiplier": 10
 		}
   ]
 }
