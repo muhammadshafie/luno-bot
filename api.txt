@@ -2,8 +2,8 @@
   "grid_percentage": 0.01,
   "bots": [
     {
-			"market_pair": "ADAMYR",
-			"trade_quantity": 10,
+			"market_pair": "CRVMYR",
+			"trade_quantity": 1,
       		"quantity_multiplier": 5
 		},
 		{
